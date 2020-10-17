@@ -1,0 +1,23 @@
+version: '2.1'
+
+services:
+  sabnzbd:
+    image: linuxserver/sabnzbd
+    container_name: sabnzbd
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=America/Chicago
+    ports:
+      - 8800:8080
+      - 9090:9090
+    volumes:
+      - sabnzbd:/config
+      - /share/Download/sabnzbd/downloads:/downloads
+      - /share/Download/sabnzbd/incomplete-downloads:/incomplete-downloads
+    restart: unless-stopped
+
+volumes:
+  sabnzbd:
+  couchpotato:
+  sonarr:
